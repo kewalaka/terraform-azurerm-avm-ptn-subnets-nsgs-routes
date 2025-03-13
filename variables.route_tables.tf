@@ -1,7 +1,7 @@
 
 variable "route_tables" {
   type = map(object({
-    disable_bgp_route_propagation = optional(bool)
+    bgp_route_propagation_enabled = optional(bool)
     name                          = string
     tags                          = optional(map(string))
     lock = optional(object({
@@ -33,7 +33,7 @@ variable "route_tables" {
   }))
   description = <<-DESCRIPTION
 
-- `disable_bgp_route_propagation` - (Optional) Boolean flag which controls propagation of routes learned by BGP on that route table. True means disable.
+- `bgp_route_propagation_enabled` - (Optional) Boolean flag which controls propagation of routes learned by BGP on that route table.  The opposite of `disable_bgp_route_propagation` in the AzAPI spec.
 - `location` - (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
 - `name` - (Required) The name of the route table. Changing this forces a new resource to be created.
 - `resource_group_name` - (Required) The name of the resource group in which to create the route table. Changing this forces a new resource to be created.
