@@ -2,7 +2,7 @@ module "subnets" {
   for_each = local.subnets
 
   source  = "Azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.2.3"
+  version = "0.8.1"
 
   virtual_network = {
     resource_id = var.virtual_network_resource_id
@@ -31,7 +31,7 @@ module "network_security_groups" {
   for_each = var.network_security_groups
 
   source              = "Azure/avm-res-network-networksecuritygroup/azurerm"
-  version             = "0.2.0"
+  version             = "0.4.0"
   resource_group_name = var.resource_group_name
   name                = each.value.name
   enable_telemetry    = var.enable_telemetry
@@ -43,7 +43,7 @@ module "route_tables" {
   for_each = var.route_tables
 
   source                        = "Azure/avm-res-network-routetable/azurerm"
-  version                       = "0.3.1"
+  version                       = "0.4.1"
   location                      = var.location
   name                          = each.value.name
   resource_group_name           = var.resource_group_name
