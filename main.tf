@@ -47,7 +47,7 @@ module "route_tables" {
   location                      = var.location
   name                          = each.value.name
   resource_group_name           = var.resource_group_name
-  bgp_route_propagation_enabled = try(!each.value.disable_bgp_route_propagation, true)
+  bgp_route_propagation_enabled = each.value.bgp_route_propagation_enabled
   enable_telemetry              = var.enable_telemetry
   tags                          = each.value.tags
 
